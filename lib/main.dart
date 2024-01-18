@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app_bar.dart';
-import 'package:flutter_application_1/app_drawer.dart';
+import 'package:flutter_application_1/share/components/app_bar.dart';
+import 'package:flutter_application_1/share/components/app_drawer.dart';
 
 void main() {
   runApp(const MyApp());
