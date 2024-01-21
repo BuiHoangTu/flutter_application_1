@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyTable extends StatelessWidget {
-  const MyTable({super.key});
+class TestTable extends StatelessWidget {
+  const TestTable({super.key});
 
   @override
   Widget build(BuildContext context) {

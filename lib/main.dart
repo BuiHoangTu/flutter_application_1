@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/share/components/app_bar.dart';
 import 'package:flutter_application_1/share/components/app_drawer.dart';
-import 'package:flutter_application_1/share/components/table.dart';
+import 'package:flutter_application_1/share/components/my_table.dart';
 
 void main() {
   runApp(const MyApp());
@@ -66,7 +66,13 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const MyTable(),
+            const MyTable(
+              header: ["Header 1", "Header2"],
+              data: [
+                ["Data 1-1", "Data 1-2"],
+                ["Data 2-1", "Data 2-2"],
+              ],
+            )
           ],
         ),
       ),
