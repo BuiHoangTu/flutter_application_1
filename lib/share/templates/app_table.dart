@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MyTable extends StatelessWidget {
+class AppTable extends StatelessWidget {
   final List<String> header;
   final List<List<String>> data;
 
-  const MyTable({super.key, required this.header, required this.data});
+  const AppTable({super.key, required this.header, required this.data});
 
   @override
   Widget build(BuildContext context) {
