@@ -10,9 +10,11 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var pages = pagesMapping.keys.toList(growable: false);
+
     return Drawer(
       child: ListView.builder(
-        itemCount: pagesMapping.length + 1, // +1 is for header
+        itemCount: pages.length + 1, // +1 is for header
         itemBuilder: (context, index) {
           if (index == 0) {
             // header
@@ -30,7 +32,7 @@ class MyDrawer extends StatelessWidget {
             );
           }
 
-          final page = pagesMapping.keys.elementAt(index - 1);
+          final page = pages[index - 1];
           final isSelected = page == currentPage;
 
           return ListTile(
