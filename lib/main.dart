@@ -43,10 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String> pagesMapping = {
+      "Home": "main.dart",
+      "Others": "pages/Other.dart"
+    };
+
     return Scaffold(
       appBar: const MyAppBar(title: "Home"),
-      drawer: const MyDrawer(
-        pages: ["Home", "Others"],
+      drawer: MyDrawer(
+        pagesMapping: pagesMapping,
         currentPage: "Home",
       ),
       body: Center(
@@ -67,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
