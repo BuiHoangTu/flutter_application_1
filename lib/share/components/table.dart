@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class QlCCCNH extends StatelessWidget {
-  const QlCCCNH({super.key});
+class MyTable extends StatelessWidget {
+  const MyTable({super.key});
 
   @override
   Widget build(BuildContext context) {
