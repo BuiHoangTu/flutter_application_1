@@ -8,18 +8,27 @@ class AppTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: TableBorder.all(color: Colors.transparent),
-      children: [
-        _buildHeaderRow(),
-        ..._buildDataRows(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Table(
+        border: TableBorder.all(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        children: [
+          _buildHeaderRow(),
+          ..._buildDataRows(),
+        ],
+      ),
     );
   }
 
   TableRow _buildHeaderRow() {
     return TableRow(
-      decoration: const BoxDecoration(color: Colors.blue),
+      decoration: const BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(3)),
+      ),
       children: List.generate(
         header.length,
         (index) => TableCell(
