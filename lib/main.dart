@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const AppTable(
-              header: ["Header 1", "Header2"],
+              headers: ["Header 1", "Header2"],
               data: [
                 ["Data 1-1", "Data 1-2"],
                 ["Data 2-1", "Data 2-2"],
