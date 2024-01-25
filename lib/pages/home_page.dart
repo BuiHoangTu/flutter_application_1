@@ -23,9 +23,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> pagesMapping = {
-      "Home": "main.dart",
-      "Others": "pages/Other.dart"
+    Map<String, Widget> pagesMapping = {
+      "Home": const MyHomePage(title: "Home"),
+      "Others": const MyHomePage(title: "Home")
     };
 
     return Scaffold(

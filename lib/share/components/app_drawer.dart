@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
-  final Map<String, String> pagesMapping;
+  final Map<String, Widget> pagesMapping;
 
   final String currentPage;
 
@@ -38,7 +38,14 @@ class MyDrawer extends StatelessWidget {
           return ListTile(
             title: Text(page),
             onTap: () {
-              // TODO: naviage
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) {
+                    return pagesMapping.values.elementAt(index - 1);
+                  }),
+                ),
+              );
             },
             selected: isSelected,
             selectedTileColor: Colors.red[200],
