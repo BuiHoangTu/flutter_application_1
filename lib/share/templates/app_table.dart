@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppTable extends StatelessWidget {
-  final List<String> headers;
-  final List<List<String>> data;
+  final List<Widget> headers;
+  final List<List<Widget>> data;
   final String? tableName;
 
   const AppTable(
@@ -27,7 +27,7 @@ class AppTable extends StatelessWidget {
                 MaterialStateColor.resolveWith((states) => Colors.blue),
             rowsPerPage: rowsPerPage,
             columns: headers
-                .map((header) => DataColumn(label: SelectableText(header)))
+                .map((header) => DataColumn(label: header))
                 .toList(growable: false),
             source: _AppTableDataSource(data),
             availableRowsPerPage: [rowsPerPage, rowsPerPage * 2],
@@ -39,7 +39,7 @@ class AppTable extends StatelessWidget {
 }
 
 class _AppTableDataSource extends DataTableSource {
-  final List<List<String>> _data;
+  final List<List<Widget>> _data;
 
   _AppTableDataSource(this._data);
 
@@ -51,9 +51,7 @@ class _AppTableDataSource extends DataTableSource {
 
     return DataRow(
       // wrap each text in DataCell
-      cells: _data[index]
-          .map((dataItem) => DataCell(SelectableText(dataItem)))
-          .toList(),
+      cells: _data[index].map((dataItem) => DataCell(dataItem)).toList(),
     );
   }
 

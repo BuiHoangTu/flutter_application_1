@@ -45,13 +45,18 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const AppTable(
-              headers: ["Header 1", "Header2"],
+            AppTable(
+              headers: ["Header 1", "Header2"]
+                  .map((e) => SelectableText(e))
+                  .toList(growable: false),
               data: [
                 ["Data 1-1", "Data 1-2"],
                 ["Data 2-1", "Data 2-2"],
-              ],
-            )
+              ]
+                  .map((es) =>
+                      es.map((e) => SelectableText(e)).toList(growable: false))
+                  .toList(growable: false),
+            ),
           ],
         ),
       ),
