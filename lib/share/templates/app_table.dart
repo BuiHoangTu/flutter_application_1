@@ -10,8 +10,8 @@ class AppTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Text? tableNameAsText;
-    if (tableName != null) tableNameAsText = Text(tableName!);
+    SelectableText? tableNameAsText;
+    if (tableName != null) tableNameAsText = SelectableText(tableName!);
 
     int rowsPerPage = 5;
 
@@ -27,7 +27,7 @@ class AppTable extends StatelessWidget {
                 MaterialStateColor.resolveWith((states) => Colors.blue),
             rowsPerPage: rowsPerPage,
             columns: headers
-                .map((header) => DataColumn(label: Text(header)))
+                .map((header) => DataColumn(label: SelectableText(header)))
                 .toList(growable: false),
             source: _AppTableDataSource(data),
             availableRowsPerPage: [rowsPerPage, rowsPerPage * 2],
@@ -51,7 +51,9 @@ class _AppTableDataSource extends DataTableSource {
 
     return DataRow(
       // wrap each text in DataCell
-      cells: _data[index].map((dataItem) => DataCell(Text(dataItem))).toList(),
+      cells: _data[index]
+          .map((dataItem) => DataCell(SelectableText(dataItem)))
+          .toList(),
     );
   }
 
