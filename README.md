@@ -1,6 +1,6 @@
 # flutter_application_1
 
-A new Flutter project.
+Flutter replication of [UI-UX project](https://github.com/BuiHoangTu/hust.year20231.uiux-WebSite)
 
 ## Getting Started
 
