@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/share/templates/table/adapter.dart';
 
-class AppTable extends StatelessWidget {
-  final List<Widget> headers;
-  final List<List<Widget>> data;
-  final String? tableName;
+class AppTable<T> extends StatelessWidget {
+  final List<Widget> _headers;
+  final List<T> _data;
+  final TableAdapter<T> _adapter;
+  final String? _tableName;
 
   const AppTable(
-      {super.key, required this.headers, required this.data, this.tableName});
+      {super.key,
+      required List<Widget> headers,
+      required List<T> data,
+      required TableAdapter<T> adapter,
+      String? tableName})
+      : _tableName = tableName,
+        _adapter = adapter,
+        _data = data,
+        _headers = headers;
 
   @override
   Widget build(BuildContext context) {
     SelectableText? tableNameAsText;
-    if (tableName != null) tableNameAsText = SelectableText(tableName!);
+    if (_tableName != null) tableNameAsText = SelectableText(_tableName!);
 
     int rowsPerPage = 5;
 
@@ -26,10 +36,10 @@ class AppTable extends StatelessWidget {
             headingRowColor:
                 MaterialStateColor.resolveWith((states) => Colors.blue),
             rowsPerPage: rowsPerPage,
-            columns: headers
+            columns: _headers
                 .map((header) => DataColumn(label: header))
                 .toList(growable: false),
-            source: _AppTableDataSource(data),
+            source: _AppTableDataSource(_data, _adapter),
             availableRowsPerPage: [rowsPerPage, rowsPerPage * 2],
           ),
         ),
@@ -38,10 +48,11 @@ class AppTable extends StatelessWidget {
   }
 }
 
-class _AppTableDataSource extends DataTableSource {
-  final List<List<Widget>> _data;
+class _AppTableDataSource<T> extends DataTableSource {
+  final List<T> _data;
+  final TableAdapter<T> _adapter;
 
-  _AppTableDataSource(this._data);
+  _AppTableDataSource(this._data, this._adapter);
 
   @override
   DataRow? getRow(int index) {
@@ -50,8 +61,11 @@ class _AppTableDataSource extends DataTableSource {
     }
 
     return DataRow(
-      // wrap each text in DataCell
-      cells: _data[index].map((dataItem) => DataCell(dataItem)).toList(),
+      // convert and wrap each element in DataCell
+      cells: _adapter
+          .convert(_data[index])
+          .map((widget) => DataCell(widget))
+          .toList(),
     );
   }
 

@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   .map((es) =>
                       es.map((e) => SelectableText(e)).toList(growable: false))
                   .toList(growable: false),
+              adapter: (data) {return},
             ),
           ],
         ),
