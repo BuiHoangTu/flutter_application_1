@@ -21,7 +21,7 @@ class AppTable<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SelectableText? tableNameAsText;
-    if (_tableName != null) tableNameAsText = SelectableText(_tableName!);
+    if (_tableName != null) tableNameAsText = SelectableText(_tableName);
 
     int rowsPerPage = 5;
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/share/components/app_bar.dart';
 import 'package:flutter_application_1/share/components/app_drawer.dart';
 import 'package:flutter_application_1/share/templates/app_table.dart';
+import 'package:flutter_application_1/share/templates/table/adapter.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -56,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   .map((es) =>
                       es.map((e) => SelectableText(e)).toList(growable: false))
                   .toList(growable: false),
-              adapter: (data) {return},
+              adapter: _TableAdapterList(),
             ),
           ],
         ),
@@ -67,5 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+}
+
+class _TableAdapterList implements TableAdapter<List<String>> {
+  @override
+  List<Widget> convert(List<String> data) {
+    return data.map((str) => SelectableText(str)).toList(growable: false);
   }
 }
