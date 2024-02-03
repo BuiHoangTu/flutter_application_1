@@ -47,9 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             AppTable(
-              headers: ["Header 1", "Header2"]
-                  .map((e) => SelectableText(e))
-                  .toList(growable: false),
               data: const [
                 ["Data 1-1", "Data 1-2"],
                 ["Data 2-1", "Data 2-2"],
@@ -73,4 +70,9 @@ class _TableAdapterList implements TableAdapter<List<String>> {
   List<Widget> convert(List<String> data) {
     return data.map((str) => SelectableText(str)).toList(growable: false);
   }
+
+  @override
+  List<Widget> get headers => ["Header 1", "Header2"]
+      .map((e) => SelectableText(e))
+      .toList(growable: false);
 }

@@ -2,21 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/share/templates/table/adapter.dart';
 
 class AppTable<T> extends StatelessWidget {
-  final List<Widget> _headers;
   final List<T> _data;
   final TableAdapter<T> _adapter;
   final String? _tableName;
 
   const AppTable(
       {super.key,
-      required List<Widget> headers,
       required List<T> data,
       required TableAdapter<T> adapter,
       String? tableName})
       : _tableName = tableName,
         _adapter = adapter,
-        _data = data,
-        _headers = headers;
+        _data = data;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +33,7 @@ class AppTable<T> extends StatelessWidget {
             headingRowColor:
                 MaterialStateColor.resolveWith((states) => Colors.blue),
             rowsPerPage: rowsPerPage,
-            columns: _headers
+            columns: _adapter.headers
                 .map((header) => DataColumn(label: header))
                 .toList(growable: false),
             source: _AppTableDataSource(_data, _adapter),
