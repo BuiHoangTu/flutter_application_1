@@ -50,13 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
               headers: ["Header 1", "Header2"]
                   .map((e) => SelectableText(e))
                   .toList(growable: false),
-              data: [
+              data: const [
                 ["Data 1-1", "Data 1-2"],
                 ["Data 2-1", "Data 2-2"],
-              ]
-                  .map((es) =>
-                      es.map((e) => SelectableText(e)).toList(growable: false))
-                  .toList(growable: false),
+              ],
               adapter: _TableAdapterList(),
             ),
           ],
