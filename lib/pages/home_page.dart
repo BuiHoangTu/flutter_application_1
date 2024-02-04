@@ -75,4 +75,7 @@ class _TableAdapterList implements TableAdapter<List<String>> {
   List<Widget> get headers => ["Header 1", "Header2"]
       .map((e) => SelectableText(e))
       .toList(growable: false);
+
+  @override
+  void onRowClick(List<String> data) {}
 }

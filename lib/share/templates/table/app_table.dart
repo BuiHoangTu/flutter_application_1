@@ -36,7 +36,8 @@ class AppTable<T> extends StatelessWidget {
             columns: _adapter.headers
                 .map((header) => DataColumn(label: header))
                 .toList(growable: false),
-            source: _AppTableDataSource(_data, _adapter),
+            source: _AppTableDataSource(_data, _adapter, context),
+            showCheckboxColumn: false,
             availableRowsPerPage: [rowsPerPage, rowsPerPage * 2],
           ),
         ),
@@ -48,13 +49,28 @@ class AppTable<T> extends StatelessWidget {
 class _AppTableDataSource<T> extends DataTableSource {
   final List<T> _data;
   final TableAdapter<T> _adapter;
+  final BuildContext context;
 
-  _AppTableDataSource(this._data, this._adapter);
+  int lastSelectedRow = -1;
+  late DateTime lastSelectTime;
+
+  _AppTableDataSource(this._data, this._adapter, this.context);
 
   @override
   DataRow? getRow(int index) {
     if (index >= _data.length) {
       return null;
+    }
+
+    var isDesktop = true;
+    var platform = Theme.of(context).platform;
+    switch (platform) {
+      case TargetPlatform.windows:
+      case TargetPlatform.macOS:
+      case TargetPlatform.linux:
+        isDesktop = true;
+      default:
+        isDesktop = false;
     }
 
     return DataRow(
@@ -63,6 +79,21 @@ class _AppTableDataSource<T> extends DataTableSource {
           .convert(_data[index])
           .map((widget) => DataCell(widget))
           .toList(),
+      onSelectChanged: (isSelected) {
+        if (isDesktop) {
+          // if desktop, double click
+          if (lastSelectedRow == index &&
+              DateTime.now().difference(lastSelectTime) > Durations.medium1) {
+            _adapter.onRowClick(_data[index]);
+          } else {
+            lastSelectedRow = index;
+            lastSelectTime = DateTime.now();
+          }
+        } else {
+          // mobile, one click
+          _adapter.onRowClick(_data[index]);
+        }
+      },
     );
   }
 

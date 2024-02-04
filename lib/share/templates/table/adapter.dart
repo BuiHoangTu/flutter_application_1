@@ -6,4 +6,6 @@ abstract class TableAdapter<T> {
   TableAdapter({required this.headers});
 
   List<Widget> convert(T data);
+
+  void onRowClick(T data);
 }
