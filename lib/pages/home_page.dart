@@ -77,5 +77,8 @@ class _TableAdapterList implements TableAdapter<List<String>> {
       .toList(growable: false);
 
   @override
-  void onRowClick(List<String> data) {}
+  void onRowClick(List<String> data) {
+    print(data);
+    print("is clicked");
+  }
 }
