@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final String _title;
 
-  const MyAppBar({super.key, required this.title});
+  const MyAppBar({super.key, required String title}) : _title = title;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       key: key,
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: const Row(
+      title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("left"),
-          Text("right"),
+          Text(_title),
+          const Text("right"),
         ],
       ),
     );
