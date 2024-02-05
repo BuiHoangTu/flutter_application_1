@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/share/templates/table/adapter.dart';
 
 class AppTable<T> extends StatelessWidget {
-  final List<T> _data;
   final TableAdapter<T> _adapter;
   final String? _tableName;
+  final _AppTableDataSource _source;
 
-  const AppTable(
+  AppTable(
       {super.key,
       required List<T> data,
       required TableAdapter<T> adapter,
       String? tableName})
       : _tableName = tableName,
         _adapter = adapter,
-        _data = data;
+        _source = _AppTableDataSource(data, adapter);
 
   @override
   Widget build(BuildContext context) {
     SelectableText? tableNameAsText;
     if (_tableName != null) tableNameAsText = SelectableText(_tableName);
+
+    _source.context = context;
 
     int rowsPerPage = 5;
 
@@ -33,10 +35,8 @@ class AppTable<T> extends StatelessWidget {
             headingRowColor:
                 MaterialStateColor.resolveWith((states) => Colors.blue),
             rowsPerPage: rowsPerPage,
-            columns: _adapter.headers
-                .map((header) => DataColumn(label: header))
-                .toList(growable: false),
-            source: _AppTableDataSource(_data, _adapter, context),
+            columns: _adapter.headers,
+            source: _source,
             showCheckboxColumn: false,
             availableRowsPerPage: [rowsPerPage, rowsPerPage * 2],
           ),
@@ -49,12 +49,12 @@ class AppTable<T> extends StatelessWidget {
 class _AppTableDataSource<T> extends DataTableSource {
   final List<T> _data;
   final TableAdapter<T> _adapter;
-  final BuildContext context;
+  late BuildContext context;
 
   int lastSelectedRow = -1;
   late DateTime lastSelectTime;
 
-  _AppTableDataSource(this._data, this._adapter, this.context);
+  _AppTableDataSource(this._data, this._adapter);
 
   @override
   DataRow? getRow(int index) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class TableAdapter<T> {
-  final List<Widget> headers;
+  final List<DataColumn> headers;
 
   TableAdapter({required this.headers});
 
