@@ -83,7 +83,7 @@ class _AppTableDataSource<T> extends DataTableSource {
         if (isDesktop) {
           // if desktop, double click
           if (lastSelectedRow == index &&
-              DateTime.now().difference(lastSelectTime) > Durations.medium1) {
+              DateTime.now().difference(lastSelectTime) <= Durations.medium1) {
             _adapter.onRowClick(_data[index]);
           } else {
             lastSelectedRow = index;
