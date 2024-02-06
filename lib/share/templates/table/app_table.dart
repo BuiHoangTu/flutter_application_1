@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/share/templates/table/adapter.dart';
+import 'package:apartment_building_manager_replica/share/templates/table/adapter.dart';
 
 class AppTable<T> extends StatelessWidget {
   final TableAdapter<T> _adapter;

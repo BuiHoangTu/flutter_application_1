@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/share/components/app_bar.dart';
-import 'package:flutter_application_1/share/components/app_drawer.dart';
-import 'package:flutter_application_1/share/templates/table/app_table.dart';
-import 'package:flutter_application_1/share/templates/table/adapter.dart';
+import 'package:apartment_building_manager_replica/share/components/app_bar.dart';
+import 'package:apartment_building_manager_replica/share/components/app_drawer.dart';
+import 'package:apartment_building_manager_replica/share/templates/table/app_table.dart';
+import 'package:apartment_building_manager_replica/share/templates/table/adapter.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

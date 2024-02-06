@@ -1,4 +1,5 @@
-name: flutter_application_1
+package: x
+name: apartment_building_manager_replica
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
