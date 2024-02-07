@@ -5,9 +5,7 @@ import 'package:apartment_building_manager_replica/share/templates/table/app_tab
 import 'package:apartment_building_manager_replica/share/templates/table/adapter.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -25,8 +23,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Map<String, Widget> pagesMapping = {
-      "Home": const MyHomePage(title: "Home"),
-      "Others": const MyHomePage(title: "Home")
+      "Home": const MyHomePage(),
+      "Others": const MyHomePage()
     };
 
     return Scaffold(
@@ -78,7 +76,9 @@ class _TableAdapterList implements TableAdapter<List<String>> {
 
   @override
   void onRowClick(List<String> data) {
+    // ignore: avoid_print
     print(data);
+    // ignore: avoid_print
     print("is clicked");
   }
 }
