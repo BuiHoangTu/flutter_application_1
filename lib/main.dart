@@ -1,7 +1,22 @@
+import 'package:apartment_building_manager_replica/pages/placeholder_page.dart';
+import 'package:apartment_building_manager_replica/share/components/app_drawer.dart';
+import 'package:apartment_building_manager_replica/share/session_data.dart';
 import 'package:flutter/material.dart';
 import 'package:apartment_building_manager_replica/pages/home_page.dart';
 
 void main() {
+  Map<String, Widget> pagesMapping = {
+    "Home": const MyHomePage(),
+    "Others": const PlaceHolderPage(),
+  };
+
+  sessionUserId = "123";
+  sessionUsername = "BHTu";
+  sessionDrawer = MyDrawer(
+    pagesMapping: pagesMapping,
+    currentPage: "Home",
+  );
+
   runApp(const MyApp());
 }
 
