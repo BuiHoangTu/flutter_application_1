@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:apartment_building_manager_replica/share/components/app_bar.dart';
 import 'package:apartment_building_manager_replica/share/components/app_drawer.dart';
 import 'package:apartment_building_manager_replica/share/templates/table/app_table.dart';
-import 'package:apartment_building_manager_replica/share/templates/table/adapter.dart';
+import 'package:apartment_building_manager_replica/share/templates/table/table_adapter.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
