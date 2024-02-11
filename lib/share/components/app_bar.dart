@@ -12,6 +12,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         _username = username,
         _userId = userId;
 
+  MyAppBar.changeTitle(MyAppBar original, String newTitle, {super.key})
+      : _title = newTitle,
+        _userId = original._userId,
+        _username = original._username;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

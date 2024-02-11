@@ -8,6 +8,10 @@ class MyDrawer extends StatelessWidget {
   const MyDrawer(
       {required this.pagesMapping, required this.currentPage, super.key});
 
+  MyDrawer.changePage(MyDrawer original, String newPage, {super.key})
+      : pagesMapping = original.pagesMapping,
+        currentPage = newPage;
+
   @override
   Widget build(BuildContext context) {
     var pages = pagesMapping.keys.toList(growable: false);
